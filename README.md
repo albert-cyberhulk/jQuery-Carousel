@@ -1,4 +1,4 @@
 jQuery Carousel
 ======
 
-from my Junior Days
+simple Carousel with jQuery
