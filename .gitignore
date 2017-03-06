@@ -1,1 +1,7 @@
 /nbproject/private/
+
+#editors
+.idea
+
+# bower dir
+bower_components
