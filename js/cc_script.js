@@ -5,12 +5,15 @@
  * Date 09.12.11
  */
 
-(function($){
+(function(window,$){
 	$.fn.ccCarousel = function(options) {
 
-	/*================================Configurations==============================*/
+		if (typeof options !== Object) {
+			options = {};
+		}
 
-		var defaults = {
+	/*================================Configurations==============================*/
+		var defoults = {
 			clickTimer:250,        //setTimeout for click
 			hoverTimer: 7000,        //setTimeout for hover
 			slider: $(".slider"),        //dynamic div
@@ -21,26 +24,26 @@
 			customWidth: $(".slider div").length * 330        //the length of the slider div depending on the count of images
 		};
 
-		defaults.sliderWidth = defaults.customWidth + "px";        //slider width in pixels
-		defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions
-		defaults.clickStep = 3*(defaults.customWidth / parseInt(defaults.sliderLength)); 
-		defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
+		defoults.sliderWidth = defoults.customWidth + "px";        //slider width in pixels
+		defoults.addition = defoults.customWidth - defoults.wrapperWidth;        //the differennce between monitor reslutions
+		defoults.clickStep = 3*(defoults.customWidth / parseInt(defoults.sliderLength)); 
+		defoults.slider.width(defoults.sliderWidth);        //initializing the slider width
 
-		var settings = $.extend(defaults, options);
+		var settings = $.extend({},defoults, options);
 
 	/*==================================main functions for click====================*/
 		
 					
 		$(".leftDirection").bind(//function for left navigational button mousedown
 			"mousedown", function(){
-				defaults.slider.stop();
-				var left = defaults.slider.css("left");
+				settings.slider.stop();
+				var left = settings.slider.css("left");
 				var leftMargin = parseInt(left);
-				if(leftMargin <= "-"+defaults.clickStep){
-						defaults.slider.animate({"left": leftMargin + defaults.clickStep+"px"},defaults.clickTimer);
+				if(leftMargin <= "-"+settings.clickStep){
+						settings.slider.animate({"left": leftMargin + settings.clickStep+"px"},settings.clickTimer);
 				}
 				else{
-					defaults.slider.animate({"left": "0px"},defaults.clickTimer);
+					settings.slider.animate({"left": "0px"},settings.clickTimer);
 			
 				}
 			}
@@ -49,23 +52,23 @@
 
 		$(".rightDirection").bind(//function for right navigational button mousedown
 			"mousedown", function(){
-				defaults.slider.stop();
-				var right = defaults.slider.css("left");
+				settings.slider.stop();
+				var right = settings.slider.css("left");
 				var rightMargin = parseInt(right);
-				var customStep = defaults.addition+rightMargin;
+				var customStep = settings.addition+rightMargin;
 				//alert(customStep);
-				if( defaults.sliderLength <=6){
-					defaults.slider.animate({"left": "-" + defaults.addition+"px"},defaults.clickTimer);
+				if( settings.sliderLength <=6){
+					settings.slider.animate({"left": "-" + settings.addition+"px"},settings.clickTimer);
 				}
-				else if( defaults.sliderLength ==7 && defaults.wrapperWidth >=1300){
-					defaults.slider.animate({"left": "-" + defaults.addition+"px"},defaults.clickTimer);
+				else if( settings.sliderLength ==7 && settings.wrapperWidth >=1300){
+					settings.slider.animate({"left": "-" + settings.addition+"px"},settings.clickTimer);
 				}
 				else{
-					if(customStep >= defaults.clickStep){
-						defaults.slider.animate({"left": rightMargin - defaults.clickStep+"px"},defaults.clickTimer);
+					if(customStep >= settings.clickStep){
+						settings.slider.animate({"left": rightMargin - settings.clickStep+"px"},settings.clickTimer);
 					}
 					else{
-						defaults.slider.animate({"left": "-" + defaults.addition+"px"},defaults.clickTimer);
+						settings.slider.animate({"left": "-" + settings.addition+"px"},settings.clickTimer);
 					}
 				}
 			}
@@ -76,51 +79,51 @@
 		 
 		$(".leftDirection").bind(//function for right navigational button mouseover
 			"mouseover", function(){
-				 defaults.slider.stop();
-				var leftHover =  defaults.slider.css("left");
+				 settings.slider.stop();
+				var leftHover =  settings.slider.css("left");
 				var leftMarginHover = parseInt(leftHover);
 				if(leftMarginHover !=0 ){
-					 defaults.slider.animate({"left": "0px"},defaults.hoverTimer);
+					 settings.slider.animate({"left": "0px"},settings.hoverTimer);
 				}
 			}
 		);//end of event
 		
 		$(".leftDirection").bind(//function for right navigational button mouseup
 			"mouseup", function(){
-				var leftHover =  defaults.slider.css("left");
+				var leftHover =  settings.slider.css("left");
 				var leftMarginHover = parseInt(leftHover);
 				if(leftMarginHover !=0 ){
-					 defaults.slider.animate({"left": "0px"},defaults.hoverTimer);
+					 settings.slider.animate({"left": "0px"},settings.hoverTimer);
 				}
 			}
 		);//end of event
 		
 		$(".leftDirection").bind(//function for left navigational button mouseout
 			"mouseout", function(){
-			 	  defaults.slider.stop();
+			 	  settings.slider.stop();
 			 }
 		);//end of event
 		
 		$(".rightDirection").bind(//function for right navigational button mouseover
 			"mouseover", function(){
-				defaults.slider.stop();
-				var rightHover = defaults.slider.css("left");
+				settings.slider.stop();
+				var rightHover = settings.slider.css("left");
 				var rightMarginHover = parseInt(rightHover);
-				defaults.slider.animate({"left": "-" + defaults.addition+"px"},defaults.hoverTimer);
+				settings.slider.animate({"left": "-" + settings.addition+"px"},settings.hoverTimer);
 			}
 		);//end of event
 		
 		$(".rightDirection").bind(//function for right navigational button mouseup
 			"mouseup", function(){
-				var rightHover = defaults.slider.css("left");
+				var rightHover = settings.slider.css("left");
 				var rightMarginHover = parseInt(rightHover);
-				defaults.slider.animate({"left": "-" + defaults.addition+"px"},defaults.hoverTimer);
+				settings.slider.animate({"left": "-" + settings.addition+"px"},settings.hoverTimer);
 			}
 		);//end of event
 		
 		$(".rightDirection").bind(//function for right navigational button mouseout
 			"mouseout", function(){
-			 	 defaults.slider.stop();
+			 	 settings.slider.stop();
 			 }
 		);//end of event	
 
@@ -128,7 +131,7 @@
 		/*=========================================part for Images that contain links==================================================*/
 		
 		
-		$(".slider img").on(//function that controls links
+		$(".slider img").live(//function that controls links
 			"click", function(){
 				if($(this).attr("rel")==1){
 					window.open($(this).attr("alt"),"_blank");
@@ -139,4 +142,5 @@
 			}
 		);//end of event
 	}
-}(jQuery));//end of dom load
+}(window,jQuery));//end of dom load
+ 
