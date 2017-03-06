@@ -5,7 +5,8 @@
  * Date 09.12.11
  */
 
-$.fn.ccCarousel = function() {
+(function($){
+	$.fn.ccCarousel = function() {
 
 /*================================Configurations==============================*/
 		
@@ -148,5 +149,6 @@ $.fn.ccCarousel = function() {
 	);//end of event
 	
 
-}//end of dom load
+}
+}(jQuery));//end of dom load
  
