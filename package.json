@@ -1,0 +1,28 @@
+{
+  "name": "jquery-carousel",
+  "version": "0.0.1",
+  "description": "simple jquery-carousel",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albert-cyberhulk/jQuery-Carousel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel"
+  },
+  "homepage": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-copy": "^0.1.0",
+    "load-grunt-configs": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
