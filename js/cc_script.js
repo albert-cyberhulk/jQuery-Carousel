@@ -22,12 +22,12 @@
 			customWidth: $(".slider div").length * 330        //the length of the slider div depending on the count of images
 		};
 
-		defaults.sliderWidth = defaults.customWidth + "px";        //slider width in pixels
-		defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions
-		defaults.clickStep = 3*(defaults.customWidth / parseInt(defaults.sliderLength)); 
-		defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
+		var settings = $.extend(defaults, options);
 
-		var settings = $.extend({},defaults, options);
+		defaults.sliderWidth = defaults.customWidth + "px";        //slider width in pixels		
+		defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions		
+		defaults.clickStep = 3*(defaults.customWidth / parseInt(defaults.sliderLength)); 		
+		defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
 	/*==================================main functions for click====================*/
 		
@@ -141,4 +141,3 @@
 		);//end of event
 	}
 }(window,jQuery));//end of dom load
- 
