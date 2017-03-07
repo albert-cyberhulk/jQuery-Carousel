@@ -5,15 +5,13 @@
  * Date 09.12.11
  */
 
-(function(window,$){
+(function(window, $){
 	$.fn.ccCarousel = function(options) {
 
-		if (typeof options !== Object) {
-			options = {};
-		}
+		options = $.isPlainObject(options) ? options: {};
 
 	/*================================Configurations==============================*/
-		var defoults = {
+		var defaults = {
 			clickTimer:250,        //setTimeout for click
 			hoverTimer: 7000,        //setTimeout for hover
 			slider: $(".slider"),        //dynamic div
@@ -24,12 +22,12 @@
 			customWidth: $(".slider div").length * 330        //the length of the slider div depending on the count of images
 		};
 
-		defoults.sliderWidth = defoults.customWidth + "px";        //slider width in pixels
-		defoults.addition = defoults.customWidth - defoults.wrapperWidth;        //the differennce between monitor reslutions
-		defoults.clickStep = 3*(defoults.customWidth / parseInt(defoults.sliderLength)); 
-		defoults.slider.width(defoults.sliderWidth);        //initializing the slider width
+		defaults.sliderWidth = defaults.customWidth + "px";        //slider width in pixels
+		defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions
+		defaults.clickStep = 3*(defaults.customWidth / parseInt(defaults.sliderLength)); 
+		defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
-		var settings = $.extend({},defoults, options);
+		var settings = $.extend({},defaults, options);
 
 	/*==================================main functions for click====================*/
 		
