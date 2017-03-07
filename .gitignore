@@ -1,7 +1,13 @@
 /nbproject/private/
 
-#editors
+# editors
 .idea
 
 # bower dir
 bower_components
+
+# npm
+node_modules
+
+# temp file storage
+.tmp
