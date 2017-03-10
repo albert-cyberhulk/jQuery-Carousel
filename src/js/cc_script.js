@@ -6,6 +6,7 @@
  */
 
 (function(window, $){
+
     $.fn.ccCarousel = function(options) {
 
         options = $.isPlainObject(options) ? options: {};
@@ -30,8 +31,7 @@
 
     /*==================================main functions for click====================*/
 
-
-        $(".leftDirection").bind(//function for left navigational button mousedown
+		$(this).find(".leftDirection").bind(//function for left navigational button mousedown
             "mousedown", function(){
                 settings.slider.stop();
                 var left = settings.slider.css("left");
@@ -44,10 +44,37 @@
 
                 }
             }
-        );//end of event
+		);//end of event
+
+		$(this).find(".leftDirection").bind(//function for right navigational button mouseover
+            "mouseover", function(){
+                 settings.slider.stop();
+                var leftHover =  settings.slider.css("left");
+                var leftMarginHover = parseInt(leftHover);
+                if(leftMarginHover !=0 ){
+                     settings.slider.animate({"left": "0px"},settings.hoverTimer);
+                }
+            }
+    	);//end of event
+
+		$(this).find(".leftDirection").bind(//function for right navigational button mouseup
+            "mouseup", function(){
+                var leftHover =  settings.slider.css("left");
+                var leftMarginHover = parseInt(leftHover);
+                if(leftMarginHover !=0 ){
+                     settings.slider.animate({"left": "0px"},settings.hoverTimer);
+                }
+            }
+    	);//end of event
+
+        $(this).find(".leftDirection").bind(//function for left navigational button mouseout
+            "mouseout", function(){
+                  settings.slider.stop();
+             }
+        );//end of event    
 
 
-        $(".rightDirection").bind(//function for right navigational button mousedown
+		$(this).find(".rightDirection").bind(//function for right navigational button mousedown
             "mousedown", function(){
                 settings.slider.stop();
                 var right = settings.slider.css("left");
@@ -69,39 +96,11 @@
                     }
                 }
             }
-        );//end of event
+		);//end of event
 
-        /*================================Functions that control slider when hovered==============================*/
+	/*================================Functions that control slider when hovered==============================*/
 
-
-        $(".leftDirection").bind(//function for right navigational button mouseover
-            "mouseover", function(){
-                 settings.slider.stop();
-                var leftHover =  settings.slider.css("left");
-                var leftMarginHover = parseInt(leftHover);
-                if(leftMarginHover !=0 ){
-                     settings.slider.animate({"left": "0px"},settings.hoverTimer);
-                }
-            }
-        );//end of event
-
-        $(".leftDirection").bind(//function for right navigational button mouseup
-            "mouseup", function(){
-                var leftHover =  settings.slider.css("left");
-                var leftMarginHover = parseInt(leftHover);
-                if(leftMarginHover !=0 ){
-                     settings.slider.animate({"left": "0px"},settings.hoverTimer);
-                }
-            }
-        );//end of event
-
-        $(".leftDirection").bind(//function for left navigational button mouseout
-            "mouseout", function(){
-                  settings.slider.stop();
-             }
-        );//end of event
-
-        $(".rightDirection").bind(//function for right navigational button mouseover
+        $(this).find(".rightDirection").bind(//function for right navigational button mouseover
             "mouseover", function(){
                 settings.slider.stop();
                 var rightHover = settings.slider.css("left");
@@ -110,7 +109,7 @@
             }
         );//end of event
 
-        $(".rightDirection").bind(//function for right navigational button mouseup
+        $(this).find(".rightDirection").bind(//function for right navigational button mouseup
             "mouseup", function(){
                 var rightHover = settings.slider.css("left");
                 var rightMarginHover = parseInt(rightHover);
@@ -118,27 +117,25 @@
             }
         );//end of event
 
-        $(".rightDirection").bind(//function for right navigational button mouseout
+        $(this).find(".rightDirection").bind(//function for right navigational button mouseout
             "mouseout", function(){
                  settings.slider.stop();
              }
-        );//end of event    
+        );//end of event 
 
+	/*=========================================part for Images that contain links==================================================*/
 
-        /*=========================================part for Images that contain links==================================================*/
-
-
-        $(".slider img").on(//function that controls links
-            "click", function(){
-                if($(this).attr("rel")==1){
-                    window.open($(this).attr("alt"),"_blank");
-                }
-                else{
-                    window.location = $(this).attr("alt");
-                }
-            }
-        );//end of event
-    };
+	 	$(this).find(".slider img").on(//function that controls links
+	            "click", function(){
+	                if($(this).attr("rel")==1){
+	                    window.open($(this).attr("alt"),"_blank");
+	                }
+	                else{
+	                    window.location = $(this).attr("alt");
+	                }
+	            }
+	        );//end of event
+	};
 
     $.fn.ccCarousel.defaults = {
         clickTimer:250,        //setTimeout for click
