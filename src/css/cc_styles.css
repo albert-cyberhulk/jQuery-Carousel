@@ -135,9 +135,7 @@ border-spacing: 0;
 }
 .image img{
 	border:#64646e 2px solid;
-	height:236px;
-	width:316px;
+	height:auto;
+	width:100%;
 	cursor:pointer;
 }
-
-
