@@ -20,15 +20,5 @@ module.exports = {
                 '<%= project.app %>'
             ]
         }
-    },
-    test: {
-        options: {
-            port: 9001,
-            base: [
-                '<%= project.temp %>',
-                '<%= project.test %>',
-                '<%= project.app %>'
-            ]
-        }
     }
 };

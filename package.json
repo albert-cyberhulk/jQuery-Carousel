@@ -24,9 +24,6 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-copy": "^0.1.0",
     "load-grunt-configs": "^1.0.0",
-    "load-grunt-tasks": "^3.5.2",
-    "node-qunit-phantomjs": "^1.5.0",
-    "phantomjs": "^2.1.7",
-    "qunitjs": "^2.1.1"
+    "load-grunt-tasks": "^3.5.2"
   }
 }

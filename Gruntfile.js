@@ -27,13 +27,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:tmp',
-        'connect:test',
         'qunit'
-    ]);
-
-    grunt.registerTask('build', [
-        'clean:dist',
-        'test',
-        'copy:dist'
     ]);
 };
