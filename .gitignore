@@ -4,7 +4,7 @@
 .idea
 
 # bower dir
-bower_components
+/src/bower_components
 
 # npm
 node_modules
