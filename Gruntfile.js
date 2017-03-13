@@ -23,6 +23,10 @@ module.exports = function (grunt) {
             'connect:livereload',
             'watch:index'
         ]);
-
     });
+
+    grunt.registerTask('test', [
+        'clean:tmp',
+        'qunit'
+    ]);
 };
