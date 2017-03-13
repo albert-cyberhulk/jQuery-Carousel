@@ -1,3 +1,3 @@
 module.exports = {
-    all: '<%= project.app %>/index.html'
+    all: 'test/index.html'
 };
