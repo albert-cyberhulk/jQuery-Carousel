@@ -1,5 +1,5 @@
 {
-  "name": "jquery-Carousel",
+  "name": "jquery-carousel",
   "homepage": "https://github.com/albert-cyberhulk/jQuery-Carousel",
   "description": "simple jquery-carousel",
   "main": "",
@@ -13,5 +13,8 @@
   ],
   "dependencies": {
     "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "qunit": "^2.1.1"
   }
 }
