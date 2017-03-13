@@ -18,15 +18,15 @@
             sliderArray: $(".slider div"),        //array of images in the slider
             wrapperWidth: $(".galleryWrapper").width(),        //initializing the wrapper gallery width
             dynamicWidth: $(".dynamic").width(),        //initializing the dynamic wrapper width
-            sliderLength: $(".slider div").length,        // count of images in the slider
-            customWidth: $(".slider div").length * 330        //the length of the slider div depending on the count of images
+            sliderLength: $(".slider div").length        // count of images in the slider
         };
 
         var settings = $.extend(defaults, $.fn.ccCarousel.defaults, options);
 
+        defaults.customWidth = $(".slider div").length * (defaults.imageWidth < 50 ? 50 : defaults.imageWidth);    //the length of the slider div depending on the count of images
         defaults.sliderWidth = defaults.customWidth;        //slider width in pixels     
         defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions       
-        defaults.clickStep = 3*(defaults.customWidth / parseInt(defaults.sliderLength));
+        defaults.clickStep = defaults.customWidth / parseInt(defaults.sliderLength);
         defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
         /*==================================main functions for click====================*/
@@ -38,7 +38,7 @@
                 var leftMargin = parseInt(left);
 
                 if(leftMargin <= "-"+settings.clickStep){
-                        settings.slider.animate({"left": leftMargin + settings.clickStep},settings.clickTimer);
+                    settings.slider.animate({"left": leftMargin + settings.clickStep},settings.clickTimer);
                 }
                 else{
                     settings.slider.animate({"left": 0},settings.clickTimer);
@@ -136,8 +136,9 @@
     };
 
     $.fn.ccCarousel.defaults = {
-        clickTimer: 250,        //setTimeout for click
-        hoverTimer: 7000        //setTimeout for hover
+        clickTimer:250,        //setTimeout for click
+        hoverTimer: 7000,        //setTimeout for hover
+        imageWidth: 330
     }
 
 }(window, jQuery));//end of dom load
