@@ -11,129 +11,122 @@
 
         options = $.isPlainObject(options) ? options : {};
 
-        /*================================Configurations==============================*/
+        /*================================Configurations==============================*/        
 
         var defaults = {
-            slider: $(".slider"),        //dynamic div
-            sliderArray: $(".slider div"),        //array of images in the slider
-            wrapperWidth: $(".galleryWrapper").width(),        //initializing the wrapper gallery width
-            dynamicWidth: $(".dynamic").width(),        //initializing the dynamic wrapper width
-            sliderLength: $(".slider div").length        // count of images in the slider
+            slider: $('.slider'),        //dynamic div
+            sliderArray: $('.slider div'),        //array of images in the slider
+            wrapperWidth: $('.galleryWrapper').width(),        //initializing the wrapper gallery width
+            dynamicWidth: $('.dynamic').width(),        //initializing the dynamic wrapper width
+            sliderLength: $('.slider div').length        // count of images in the slider
         };
 
-        var settings = $.extend(defaults, $.fn.ccCarousel.defaults, options);
+        $.fn.ccCarousel.defaults = $.extend(defaults, $.fn.ccCarousel.defaults, options);
 
-        defaults.customWidth = $(".slider div").length * (defaults.imageWidth < 50 ? 50 : defaults.imageWidth);    //the length of the slider div depending on the count of images
+        defaults.customWidth = $('.slider div').length * (defaults.imageWidth < 50 ? 50 : defaults.imageWidth);    //the length of the slider div depending on the count of images
         defaults.sliderWidth = defaults.customWidth;        //slider width in pixels     
         defaults.addition = defaults.customWidth - defaults.wrapperWidth;        //the differennce between monitor reslutions       
         defaults.clickStep = defaults.customWidth / parseInt(defaults.sliderLength);
         defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
+        var handler = {
+            leftMousedown: $(this).find('.leftDirection').bind('mousedown', $.fn.ccCarousel.moveToLeft),
+            rightMousedown: $(this).find('.rightDirection').bind('mousedown', $.fn.ccCarousel.moveToRight),
+            leftMouseover: $(this).find('.leftDirection').bind('mouseover', leftMouseover),
+            rightMouseover: $(this).find('.rightDirection').bind('mouseover', rightMouseover),
+            leftMouseup: $(this).find('.leftDirection').bind('mouseup', leftMouseup),
+            rightMouseup: $(this).find('.rightDirection').bind('mouseup', rightMouseup),
+            leftMouseout: $(this).find('.leftDirection').bind('mouseout', mouseout),
+            rightMouseout: $(this).find('.rightDirection').bind('mouseout', mouseout),
+            imageClick:  $(this).find('.slider img').on('click', imageClick)
+        }
+
         /*==================================main functions for click====================*/
 
-        $(this).find(".leftDirection").bind(//function for left navigational button mousedown
-            "mousedown", function () {
-                settings.slider.stop();
-                var left = settings.slider.css("left");
-                var leftMargin = parseInt(left);
+        function leftMouseover(){
+            $.fn.ccCarousel.stop($.fn.ccCarousel.defaults.slider);
+            var leftHover = $.fn.ccCarousel.defaults.slider.css('left');
+            var leftMarginHover = parseInt(leftHover);
 
-                if(leftMargin <= "-"+settings.clickStep){
-                    settings.slider.animate({"left": leftMargin + settings.clickStep},settings.clickTimer);
-                }
-                else{
-                    settings.slider.animate({"left": 0},settings.clickTimer);
-                }
+            if(leftMarginHover !=0 ){
+                 $.fn.ccCarousel.defaults.slider.animate({'left': 0},$.fn.ccCarousel.defaults.hoverTimer);
             }
-        );//end of event
+        }
 
-        $(this).find(".leftDirection").bind(//function for right navigational button mouseover
-            "mouseover", function () {
-                settings.slider.stop();
-                var leftHover = settings.slider.css("left");
-                var leftMarginHover = parseInt(leftHover);
+        function leftMouseup(){
+            var leftHover = $.fn.ccCarousel.defaults.slider.css('left');
+            var leftMarginHover = parseInt(leftHover);
 
-                if(leftMarginHover !=0 ){
-                     settings.slider.animate({"left": 0},settings.hoverTimer);
-                }
+            if(leftMarginHover !=0 ){
+                 $.fn.ccCarousel.defaults.slider.animate({'left': 0},$.fn.ccCarousel.defaults.hoverTimer);
             }
-        );//end of event
-
-        $(this).find(".leftDirection").bind(//function for right navigational button mouseup
-            "mouseup", function () {
-                var leftHover = settings.slider.css("left");
-                var leftMarginHover = parseInt(leftHover);
-
-                if(leftMarginHover !=0 ){
-                     settings.slider.animate({"left": 0},settings.hoverTimer);
-                }
-            }
-        );//end of event
-
-        $(this).find(".leftDirection").bind(//function for left navigational button mouseout
-            "mouseout", function () {
-                settings.slider.stop();
-            }
-        );//end of event
-
-
-        $(this).find(".rightDirection").bind(//function for right navigational button mousedown
-            "mousedown", function () {
-                settings.slider.stop();
-                var right = settings.slider.css("left");
-                var rightMargin = parseInt(right);
-
-                var customStep = settings.addition+rightMargin;
-                //alert(customStep);                
-                if(customStep >= settings.clickStep){
-                    settings.slider.animate({"left": rightMargin - settings.clickStep},settings.clickTimer);
-                }
-                else{
-                    settings.slider.animate({"left": "-" + settings.addition},settings.clickTimer);
-                }                
-            }
-        );//end of event
+        }        
 
         /*================================Functions that control slider when hovered==============================*/
 
-        $(this).find(".rightDirection").bind(//function for right navigational button mouseover
-            "mouseover", function () {
-                settings.slider.stop();
-                var rightHover = settings.slider.css("left");
-                var rightMarginHover = parseInt(rightHover);
+        function rightMouseover(){
+            $.fn.ccCarousel.stop($.fn.ccCarousel.defaults.slider);
+            var rightHover = $.fn.ccCarousel.defaults.slider.css('left');
+            var rightMarginHover = parseInt(rightHover);
 
-                settings.slider.animate({"left": "-" + settings.addition},settings.hoverTimer);
-            }
-        );//end of event
+            $.fn.ccCarousel.defaults.slider.animate({'left': '-' + $.fn.ccCarousel.defaults.addition},$.fn.ccCarousel.defaults.hoverTimer);
+        }
 
-        $(this).find(".rightDirection").bind(//function for right navigational button mouseup
-            "mouseup", function () {
-                var rightHover = settings.slider.css("left");
-                var rightMarginHover = parseInt(rightHover);
+        function rightMouseup(){
+            var rightHover = $.fn.ccCarousel.defaults.slider.css('left');
+            var rightMarginHover = parseInt(rightHover);
 
-                settings.slider.animate({"left": "-" + settings.addition},settings.hoverTimer);
-            }
-        );//end of event
+            $.fn.ccCarousel.defaults.slider.animate({'left': '-' + $.fn.ccCarousel.defaults.addition},$.fn.ccCarousel.defaults.hoverTimer);
+        }
 
-        $(this).find(".rightDirection").bind(//function for right navigational button mouseout
-            "mouseout", function () {
-                settings.slider.stop();
-            }
-        );//end of event
+        function mouseout(){
+            $.fn.ccCarousel.stop($.fn.ccCarousel.defaults.slider);
+        }
 
         /*=========================================part for Images that contain links==================================================*/
 
-        $(this).find(".slider img").on(//function that controls links
-            "click", function () {
-                if ($(this).attr("rel") == 1) {
-                    window.open($(this).attr("alt"), "_blank");
-                }
-                else {
-                    window.location = $(this).attr("alt");
-                }
+        function imageClick(){
+            if ($(this).attr('rel') == 1) {
+                window.open($(this).attr('alt'), '_blank');
             }
-        );//end of event
+            else {
+                window.location = $(this).attr('alt');
+            }
+        }
         return $(this);
     };
+
+    $.fn.ccCarousel.stop = function(slider){
+        slider.stop();
+    }
+
+    $.fn.ccCarousel.moveToRight = function(){
+        $.fn.ccCarousel.stop($.fn.ccCarousel.defaults.slider);
+        var right = $.fn.ccCarousel.defaults.slider.css('left');
+        var rightMargin = parseInt(right);
+
+        var customStep = $.fn.ccCarousel.defaults.addition+rightMargin;
+        //alert(customStep);                
+        if(customStep >= $.fn.ccCarousel.defaults.clickStep){
+            $.fn.ccCarousel.defaults.slider.animate({'left': rightMargin - $.fn.ccCarousel.defaults.clickStep},$.fn.ccCarousel.defaults.clickTimer);
+        }
+        else{
+            $.fn.ccCarousel.defaults.slider.animate({'left': '-' + $.fn.ccCarousel.defaults.addition},$.fn.ccCarousel.defaults.clickTimer);
+        }        
+    }
+
+    $.fn.ccCarousel.moveToLeft = function(){
+        $.fn.ccCarousel.stop($.fn.ccCarousel.defaults.slider);
+        var left = $.fn.ccCarousel.defaults.slider.css('left');
+        var leftMargin = parseInt(left);
+
+        if(leftMargin <= '-'+$.fn.ccCarousel.defaults.clickStep){
+            $.fn.ccCarousel.defaults.slider.animate({'left': leftMargin + $.fn.ccCarousel.defaults.clickStep},$.fn.ccCarousel.defaults.clickTimer);
+        }
+        else{
+            $.fn.ccCarousel.defaults.slider.animate({'left': 0},$.fn.ccCarousel.defaults.clickTimer);
+        }
+    }
 
     $.fn.ccCarousel.defaults = {
         clickTimer:250,        //setTimeout for click
