@@ -8,7 +8,7 @@
 (function (window, $) {
 
     var bindEvent = (function(){
-            var onMouseDownLeft = function(){
+            onMouseDownLeft = function(){
                 settings.slider.stop();
                 var left = settings.slider.css('left');
                 var leftMargin = parseInt(left);
@@ -20,7 +20,7 @@
                     settings.slider.animate({'left': 0},settings.clickTimer);
                 }
             };
-            var onMouseDownRight = function(){
+            onMouseDownRight = function(){
                 settings.slider.stop();
                 var right = settings.slider.css('left');
                 var rightMargin = parseInt(right);
@@ -34,7 +34,7 @@
                     settings.slider.animate({'left': '-' + settings.addition},settings.clickTimer);
                 }
             };
-            var onMouseStop = function(){
+            onMouseStop = function(){
                 settings.slider.stop();
             }
             return{
@@ -68,8 +68,6 @@
         defaults.clickStep = defaults.customWidth / parseInt(defaults.sliderLength);
         defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
-        $(this).find('.leftDirection').bind('mousedown', $.fn.ccCarousel.moveToLeft);
-        $(this).find('.rightDirection').bind('mousedown', $.fn.ccCarousel.moveToRight);
         $(this).find('.leftDirection').bind('mouseover', leftMouseover);
         $(this).find('.rightDirection').bind('mouseover', rightMouseover);
         $(this).find('.leftDirection').bind('mouseup', leftMouseup);
@@ -81,8 +79,20 @@
 
         /*==================================main functions for click====================*/
 
+        this.moveToLeft = function(){
+            $(this).bind('mousedown', onMouseDownLeft);
+        }
+
+        this.moveToRight = function(){
+            $(this).bind('mousedown', onMouseDownRight);
+        }
+
+        this.stop = function(){
+            onMouseStop();
+        }
+
         function leftMouseover(){
-            $.fn.ccCarousel.stop(settings.slider);
+            onMouseStop();
             var leftHover = settings.slider.css('left');
             var leftMarginHover = parseInt(leftHover);
 
@@ -103,7 +113,7 @@
         /*================================Functions that control slider when hovered==============================*/
 
         function rightMouseover(){
-            $.fn.ccCarousel.stop(settings.slider);
+            onMouseStop();
             var rightHover = settings.slider.css('left');
             var rightMarginHover = parseInt(rightHover);
 
@@ -118,7 +128,7 @@
         }
 
         function mouseout(){
-            $.fn.ccCarousel.stop(settings.slider);
+            onMouseStop();
         }
 
         /*=========================================part for Images that contain links==================================================*/
@@ -131,7 +141,7 @@
                 window.location = $(this).attr('alt');
             }
         }
-        return $(this);
+        return this;
     };
 
     $.fn.ccCarousel.defaults = {
@@ -139,11 +149,5 @@
         hoverTimer: 7000,        //setTimeout for hover
         imageWidth: 330
     }
-
-    $.fn.ccCarousel.stop = bindEvent.onMouseStop;
-
-    $.fn.ccCarousel.moveToRight = bindEvent.onMouseDownRight;
-
-    $.fn.ccCarousel.moveToLeft = bindEvent.onMouseDownLeft;
 
 }(window, jQuery));//end of dom load
