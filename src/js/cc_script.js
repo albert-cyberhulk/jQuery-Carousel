@@ -8,6 +8,7 @@
 (function (window, $) {
 
     var bindEvent = (function(){
+        
             onMouseDownLeft = function(){
                 settings.slider.stop();
                 var left = settings.slider.css('left');
@@ -38,9 +39,9 @@
                 settings.slider.stop();
             }
             return{
-                onMouseDownLeft: onMouseDownLeft,
-                onMouseDownRight: onMouseDownRight,
-                onMouseStop: onMouseStop
+                moveToLeft: onMouseDownLeft,
+                moveToRight: onMouseDownRight,
+                stop: onMouseStop
             }
         })();
 
@@ -58,7 +59,7 @@
             wrapperWidth: $('.galleryWrapper').width(),        //initializing the wrapper gallery width
             dynamicWidth: $('.dynamic').width(),        //initializing the dynamic wrapper width
             sliderLength: $('.slider div').length        // count of images in the slider
-        };
+        }
 
         settings = $.extend(defaults,  $.fn.ccCarousel.defaults, options);
 
@@ -68,6 +69,7 @@
         defaults.clickStep = defaults.customWidth / parseInt(defaults.sliderLength);
         defaults.slider.width(defaults.sliderWidth);        //initializing the slider width
 
+       
         $(this).find('.leftDirection').bind('mouseover', leftMouseover);
         $(this).find('.rightDirection').bind('mouseover', rightMouseover);
         $(this).find('.leftDirection').bind('mouseup', leftMouseup);
@@ -79,16 +81,19 @@
 
         /*==================================main functions for click====================*/
 
-        this.moveToLeft = function(){
-            $(this).bind('mousedown', onMouseDownLeft);
+        $(this).find('.leftDirection').on('mousedown', moveToLeft);
+        $(this).find('.rightDirection').on('mousedown', moveToRight);
+
+        function moveToLeft(){
+            onMouseDownLeft(); // Here I wrapped the functions, because 'onMouseDownLeft' is the same to write the code of 'moveToLeft'
         }
 
-        this.moveToRight = function(){
-            $(this).bind('mousedown', onMouseDownRight);
+        function moveToRight(){
+            onMouseDownRight(); // The same here
         }
 
-        this.stop = function(){
-            onMouseStop();
+        function stop(){
+            onMouseStop(); // and here
         }
 
         function leftMouseover(){
@@ -141,7 +146,7 @@
                 window.location = $(this).attr('alt');
             }
         }
-        return this;
+        return $(this);
     };
 
     $.fn.ccCarousel.defaults = {
@@ -149,5 +154,9 @@
         hoverTimer: 7000,        //setTimeout for hover
         imageWidth: 330
     }
+
+    $.fn.ccCarousel.moveToLeft = onMouseDownLeft;
+    $.fn.ccCarousel.moveToRight = onMouseDownRight;
+    $.fn.ccCarousel.stop = onMouseStop;
 
 }(window, jQuery));//end of dom load
