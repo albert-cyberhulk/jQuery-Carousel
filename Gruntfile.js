@@ -29,4 +29,12 @@ module.exports = function (grunt) {
         'clean:tmp',
         'qunit'
     ]);
+
+    grunt.registerTask('build', [
+        'clean:dist',
+        'jshint:all',
+        'test',
+        'copy:dist',
+        'uglify'
+    ]);
 };

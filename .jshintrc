@@ -1,0 +1,21 @@
+{
+  "node": true,
+  "browser": true,
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "latedef": true,
+  "noarg": true,
+  "undef": true,
+  "unused": false,
+  "strict": true,
+  "trailing": true,
+  "smarttabs": true,
+  "funcscope": true,
+  "asi": true,
+  "globals": {
+    "jQuery": false,
+    "$": false,
+    "QUnit": false
+  }
+}

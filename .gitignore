@@ -11,3 +11,5 @@ node_modules
 
 # temp file storage
 .tmp
+
+dist
