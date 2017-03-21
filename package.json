@@ -2,6 +2,12 @@
   "name": "jquery-carousel",
   "version": "0.0.1",
   "description": "simple jquery-carousel",
+  "main": "src/js/cc_script.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "github"
+  ],
   "scripts": {
     "test": "grunt test"
   },
@@ -9,13 +15,22 @@
     "type": "git",
     "url": "git+https://github.com/albert-cyberhulk/jQuery-Carousel.git"
   },
-  "author": "",
+  "author": [
+    "albert-cyberhulk <albert@cyberhulk.net>"
+  ],
   "license": "ISC",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
   "bugs": {
     "url": "https://github.com/albert-cyberhulk/jQuery-Carousel"
   },
   "homepage": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
-  "dependencies": {},
+  "docs": "https://github.com/albert-cyberhulk/jQuery-Carousel",
+  "dependencies": {
+    "jquery": "~1.8.0"
+  },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
