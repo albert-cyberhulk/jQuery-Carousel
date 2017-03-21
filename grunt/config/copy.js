@@ -13,6 +13,12 @@ module.exports = {
                 cwd: '<%= project.app %>',
                 dest: '<%= project.temp %>/',
                 src: 'index.html'
+            },
+            {
+              expand: true,
+              cwd: '<%= project.app %>/js',
+              dest: '<%= project.dist %>',
+              src: 'cc_script.js'
             }
         ]
     }
