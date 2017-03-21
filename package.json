@@ -2,10 +2,11 @@
   "name": "jquery-carousel",
   "version": "0.0.1",
   "description": "simple jquery-carousel",
-  "main": "src/js/cc_script.js",
+  "main": "./dist/cc_script.js",
   "keywords": [
-    "jquery",
-    "plugin",
+    "jquery-plugin",
+    "slider",
+    "responsive-slider",
     "github"
   ],
   "scripts": {
@@ -13,10 +14,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albert-cyberhulk/jQuery-Carousel.git"
+    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel"
   },
-  "author": [
-    "albert-cyberhulk <albert@cyberhulk.net>"
+  "author": {
+    "name": "albert-cyberhulk",
+    "email": "albert@cyberhulk.net",
+    "url": "http://cyberhulk.net/"
+  },
+  "contributors": [
+    {
+      "name": "Ashot",
+      "email": "ashot.todo@gmail.com"
+    },
+    {
+      "name": "Robert",
+      "email": "rhanesoghlyan@gmail.com"
+    },
+    {
+      "name": "Mariam",
+      "email": "mariam13martirosyan@gmail.com"
+    }
   ],
   "license": "ISC",
   "ignore": [
@@ -24,12 +41,12 @@
     "bower_components"
   ],
   "bugs": {
-    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel"
+    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel/issues"
   },
   "homepage": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
-  "docs": "https://github.com/albert-cyberhulk/jQuery-Carousel",
+  "docs": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
   "dependencies": {
-    "jquery": "~1.8.0"
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
