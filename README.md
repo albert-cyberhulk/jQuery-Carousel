@@ -29,17 +29,21 @@ add it to your HTML file
 ````bash
 <script src="bower_components/jquery-carousel/dist/jquery-carousel.min.js"></script>
 ````
+or
+````bash
+<script src="node_modules/jquery-carousel/dist/jquery-carousel.min.js"></script>
+````
 
 #### Install jQuery Carousel
 
 The built version of jquery-carousel will be put in the dist/ directory, along with the minified copy.
 
-Install npm node module
+Install npm packages
 ````bash
 npm install
 ````
 
-Install bower node module
+Install bower packages
 ````bash
 bower install
 ````
@@ -68,21 +72,19 @@ grunt build
 - jQuery: [JavaScript library](https://jquery.com/)
 
 ### Usage
-You can change default data like this
+You can change default settings
 ````javascript
 $.fn.ccCarousel.defaults = {
-    clickTimer: 250, //setTimeout for click
-    hoverTimer: 7000, //setTimeout for hover
+    clickTimer: 500, //setTimeout for click
+    hoverTimer: 6000, //setTimeout for hover
     imageWidth: 330
 }
-
-$.fn.ccCarousel.defaults.clickTimer = 800;
 ````
 
 There are 3 public methods for  jQuery Carousel plugin slider
-- moveToLeft: slider moves to the left
-- moveToRight: slider moves to the right
-- stop: slider stops
+- moveToLeft: moves slider to left
+- moveToRight: moves slider to right
+- stop: stops the slider
 
 ### License
 
