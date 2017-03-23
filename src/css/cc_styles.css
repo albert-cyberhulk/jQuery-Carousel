@@ -118,6 +118,7 @@ border-spacing: 0;
 	background-repeat:no-repeat;
 }
 .slider{
+	margin-left: 50px;
 	width:100%;
 	height:auto;
 	position:relative;
@@ -144,11 +145,17 @@ border-spacing: 0;
 	.galleryWrapper{
 		width: 315px;
 	}
+	.slider{
+		margin: 0;
+	}
 }
 
 @media (min-width:480px) and (max-width: 767px){
 	.galleryWrapper{
 		width: 100%;
+	}
+	.slider{
+		margin: 0;
 	}
 }
 
@@ -156,10 +163,16 @@ border-spacing: 0;
 	.galleryWrapper{
 		width: 645px;
 	}
+	.slider{
+		margin: 0;
+	}
 }
 
 @media (min-width:992px) and (max-width: 1200px){
 	.galleryWrapper{
 		width: 975px;
+	}
+	.slider{
+		margin: 0;
 	}
 }
