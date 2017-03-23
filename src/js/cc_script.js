@@ -19,12 +19,12 @@
       wrapperWidth: $('.galleryWrapper').width(), //initializing the wrapper gallery width
       dynamicWidth: $('.dynamic').width(), //initializing the dynamic wrapper width
       sliderLength: $('.slider div').length // count of images in the slider
-    }
+    };
 
     var settings = $.extend(defaults, $.fn.ccCarousel.defaults, options);
 
     function initConfig() {
-      settings.customWidth = $('.slider div').length * (settings.imageWidth < 50 ? 50 : settings.imageWidth); //the length of the slider div depending on the count of images
+      settings.customWidth = settings.sliderLength * (settings.imageWidth < 50 ? 50 : settings.imageWidth); //the length of the slider div depending on the count of images
       settings.sliderWidth = settings.customWidth; //slider width in pixels
       settings.addition = settings.customWidth - settings.wrapperWidth; //the differennce between monitor reslutions
       settings.clickStep = settings.customWidth / parseInt(settings.sliderLength);
@@ -34,11 +34,11 @@
     /*==================================main functions for click====================*/
 
     function moveToLeft() {
-      settings.slider.stop();
+      stop();
       var left = settings.slider.css('left');
       var leftMargin = parseInt(left);
 
-      if (leftMargin <= '-' + settings.clickStep) {
+      if (leftMargin <= -settings.clickStep) {
         settings.slider.animate({'left': leftMargin + settings.clickStep}, settings.clickTimer);
       }
       else {
@@ -47,7 +47,7 @@
     }
 
     function moveToRight() {
-      settings.slider.stop();
+      stop();
       var right = settings.slider.css('left');
       var rightMargin = parseInt(right);
 
@@ -57,16 +57,16 @@
         settings.slider.animate({'left': rightMargin - settings.clickStep}, settings.clickTimer);
       }
       else {
-        settings.slider.animate({'left': '-' + settings.addition}, settings.clickTimer);
+        settings.slider.animate({'left': -settings.addition}, settings.clickTimer);
       }
     }
 
     function stop() {
-      settings.slider.stop();
+      settings.slider.stop(true);
     }
 
     function leftMouseover() {
-      settings.slider.stop();
+      stop();
       var leftHover = settings.slider.css('left');
       var leftMarginHover = parseInt(leftHover);
 
@@ -88,28 +88,22 @@
 
     function rightMouseover() {
       settings.slider.stop();
-      var rightHover = settings.slider.css('left');
-      var rightMarginHover = parseInt(rightHover);
-
-      settings.slider.animate({'left': '-' + settings.addition}, settings.hoverTimer);
+      settings.slider.animate({'left': -settings.addition}, settings.hoverTimer);
     }
 
     function rightMouseup() {
-      var rightHover = settings.slider.css('left');
-      var rightMarginHover = parseInt(rightHover);
-
-      settings.slider.animate({'left': '-' + settings.addition}, settings.hoverTimer);
+      settings.slider.animate({'left': -settings.addition}, settings.hoverTimer);
     }
 
     function mouseout() {
-      settings.slider.stop();
+      stop();
     }
 
     /*=========================================part for Images that contain links==================================================*/
 
     function imageClick() {
-      if ($(this).attr('rel') == 1) {
-        window.open($(this).attr('alt'), '_blank');
+      if ($(this).attr('src')) {
+        window.open($(this).attr('src'), '_blank');
       }
       else {
         window.location = $(this).attr('alt');
@@ -144,4 +138,4 @@
     imageWidth: 330
   }
 
-}(window, jQuery));//end of dom load
+}(window, jQuery));//end of dom loadz
