@@ -19,7 +19,6 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean',
-            'copy:dist',
             'connect:livereload',
             'watch:index'
         ]);
