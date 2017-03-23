@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+/*=====================CSS styles reset====================*/
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+img, ins, kbd, q, s, samp,
+small, strike, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  background-color: #000000;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*=====================Main styles ====================*/
+
+.galleryWrapper {
+  height: 260px;
+  max-width: 1440px;
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  border-top: #64646e 2px solid;
+  border-bottom: #64646e 2px solid;
+}
+
+.dynamic {
+  width: 100%;
+  position: relative;
+  height: 240px;
+  display: block;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.leftDirection {
+  width: 42px;
+  height: 86px;
+  display: block;
+  background-image: url(../img/layout/arrow_left.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 75px;
+  margin-left: 20px;
+}
+
+.leftDirection:hover {
+  background-image: url(../img/layout/arrow_left_hover.png);
+  background-repeat: no-repeat;
+}
+
+.rightDirection {
+  width: 42px;
+  height: 86px;
+  display: block;
+  background-image: url(../img/layout/arrow_right.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1000;
+  right: 1%;
+  margin-top: 75px;
+}
+
+.rightDirection:hover {
+  background-image: url(../img/layout/arrow_right_hover.png);
+  background-repeat: no-repeat;
+}
+
+.slider {
+  margin-left: 50px;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.image {
+  height: auto;
+  width: 7%;
+  display: block;
+  float: left;
+  overflow: hidden;
+}
+
+.image img {
+  display: block;
+  max-width: 100%;
+  border: #64646e 2px solid;
+  height: auto;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .galleryWrapper {
+    width: 315px;
+  }
+
+  .slider {
+    margin: 0;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .galleryWrapper {
+    width: 100%;
+  }
+
+  .slider {
+    margin: 0;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .galleryWrapper {
+    width: 645px;
+  }
+
+  .slider {
+    margin: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .galleryWrapper {
+    width: 975px;
+  }
+
+  .slider {
+    margin: 0;
+  }
+}
