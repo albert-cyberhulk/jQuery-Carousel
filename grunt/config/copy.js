@@ -10,7 +10,7 @@ module.exports = {
             },
             {
                 expand: true,
-                cwd: '<%= project.app %>',
+                cwd: '<%= project.example %>',
                 dest: '<%= project.temp %>/',
                 src: 'index.html'
             },

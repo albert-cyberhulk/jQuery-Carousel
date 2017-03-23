@@ -5,7 +5,7 @@ module.exports = {
             livereload: true
         },
         files: [
-            '<%= project.app %>/index.html',
+            '<%= project.example %>/index.html',
             '<%= project.app %>/css/*.css',
             '<%= project.app %>/js/*.js'
         ],
