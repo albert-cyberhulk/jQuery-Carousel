@@ -38,7 +38,7 @@
       var left = settings.slider.css('left');
       var leftMargin = parseInt(left);
 
-      if (leftMargin <= '-' + settings.clickStep) {
+      if (leftMargin <= -settings.clickStep) {
         settings.slider.animate({'left': leftMargin + settings.clickStep}, settings.clickTimer);
       }
       else {
@@ -57,7 +57,7 @@
         settings.slider.animate({'left': rightMargin - settings.clickStep}, settings.clickTimer);
       }
       else {
-        settings.slider.animate({'left': '-' + settings.addition}, settings.clickTimer);
+        settings.slider.animate({'left': -settings.addition}, settings.clickTimer);
       }
     }
 
@@ -88,11 +88,11 @@
 
     function rightMouseover() {
       settings.slider.stop();
-      settings.slider.animate({'left': '-' + settings.addition}, settings.hoverTimer);
+      settings.slider.animate({'left': -settings.addition}, settings.hoverTimer);
     }
 
     function rightMouseup() {
-      settings.slider.animate({'left': '-' + settings.addition}, settings.hoverTimer);
+      settings.slider.animate({'left': -settings.addition}, settings.hoverTimer);
     }
 
     function mouseout() {
