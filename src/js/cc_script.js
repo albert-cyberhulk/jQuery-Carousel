@@ -19,13 +19,13 @@
             slider: $('.slider'), //dynamic div
             sliderArray: $('.slider div'), //array of images in the slider
             wrapperWidth: $('.galleryWrapper').width(), //initializing the wrapper gallery width
-            dynamicWidth: $('.dynamic').width(), //initializing the dynamic wrapper width
-            sliderLength: $('.slider div').length // count of images in the slider
+            dynamicWidth: $('.dynamic').width() //initializing the dynamic wrapper width
         };
 
         var settings = $.extend(defaults, $.fn.ccCarousel.defaults, options);
 
         function initConfig() {
+            settings.sliderLength = settings.sliderArray.length; // count of images in the slider
             settings.customWidth = settings.sliderLength * (settings.imageWidth < 50 ? 50 : settings.imageWidth); //the length of the slider div depending on the count of images
             settings.sliderWidth = settings.customWidth; //slider width in pixels
             settings.addition = settings.customWidth - settings.wrapperWidth; //the differennce between monitor reslutions
@@ -39,16 +39,19 @@
             settings.slider.stop(true);
         }
 
+        function animate(left, timer) {
+            settings.slider.animate(left, timer);
+        }
+
         function moveToLeft() {
             stop();
             var left = settings.slider.css('left');
             var leftMargin = parseInt(left);
 
             if (leftMargin <= -settings.clickStep) {
-                settings.slider.animate({left: leftMargin + settings.clickStep}, settings.clickTimer);
-            }
-            else {
-                settings.slider.animate({left: 0}, settings.clickTimer);
+                animate({left: leftMargin + settings.clickStep}, settings.clickTimer);
+            } else {
+                animate({left: 0}, settings.clickTimer);
             }
         }
 
@@ -60,10 +63,9 @@
             var customStep = settings.addition + rightMargin;
 
             if (customStep >= settings.clickStep) {
-                settings.slider.animate({left: rightMargin - settings.clickStep}, settings.clickTimer);
-            }
-            else {
-                settings.slider.animate({left: -settings.addition}, settings.clickTimer);
+                animate({left: rightMargin - settings.clickStep}, settings.clickTimer);
+            } else {
+                animate({left: -settings.addition}, settings.clickTimer);
             }
         }
 
@@ -73,7 +75,7 @@
             var leftMarginHover = parseInt(leftHover);
 
             if (leftMarginHover !== 0) {
-                settings.slider.animate({left: 0}, settings.hoverTimer);
+                animate({left: 0}, settings.hoverTimer);
             }
         }
 
@@ -82,7 +84,7 @@
             var leftMarginHover = parseInt(leftHover);
 
             if (leftMarginHover !== 0) {
-                settings.slider.animate({left: 0}, settings.hoverTimer);
+                animate({left: 0}, settings.hoverTimer);
             }
         }
 
@@ -90,11 +92,11 @@
 
         function rightMouseover() {
             settings.slider.stop();
-            settings.slider.animate({left: -settings.addition}, settings.hoverTimer);
+            animate({left: -settings.addition}, settings.hoverTimer);
         }
 
         function rightMouseup() {
-            settings.slider.animate({left: -settings.addition}, settings.hoverTimer);
+            animate({left: -settings.addition}, settings.hoverTimer);
         }
 
         function mouseout() {
@@ -106,8 +108,7 @@
         function imageClick() {
             if ($(this).attr('src')) {
                 window.open($(this).attr('src'), '_blank');
-            }
-            else {
+            } else {
                 window.location = $(this).attr('alt');
             }
         }
