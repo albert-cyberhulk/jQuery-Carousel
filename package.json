@@ -1,5 +1,5 @@
 {
-  "name": "jquery-carousel",
+  "name": "jquery-cccarousel",
   "version": "0.0.1",
   "description": "simple jquery-carousel",
   "main": "./dist/cc_script.js",
