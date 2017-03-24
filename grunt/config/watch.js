@@ -9,6 +9,6 @@ module.exports = {
             '<%= project.app %>/css/*.css',
             '<%= project.app %>/js/*.js'
         ],
-        tasks: ['copy:dist']
+        tasks: ['copy:dist', 'jshint', 'qunit']
     }
 };
