@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 QUnit.test('plugin instance should be initialized ', function (assert) {
     var instance = $('.galleryWrapper').ccCarousel({});

@@ -39,8 +39,8 @@
             settings.slider.stop(true);
         }
 
-        function animate(left, timer) {
-            settings.slider.animate(left, timer);
+        function animate(params, delay) {
+            settings.slider.animate(params, delay);
         }
 
         function moveToLeft() {
@@ -106,6 +106,7 @@
         /*=========================================part for Images that contain links==================================================*/
 
         function imageClick() {
+            /*jshint validthis: true */
             if ($(this).attr('src')) {
                 window.open($(this).attr('src'), '_blank');
             } else {
@@ -114,6 +115,7 @@
         }
 
         function bindEvents() {
+            /*jshint validthis: true */
             $(this).find('.leftDirection').on('mousedown', moveToLeft);
             $(this).find('.rightDirection').on('mousedown', moveToRight);
             $(this).find('.leftDirection').bind('mouseover', leftMouseover);
