@@ -16,13 +16,13 @@ Clone a Git repository using the command line.
 
 npm
 ````bash
-npm install jquery-cccarousel --save
+npm install jquery-carousel --save
 ````
 or
 
 bower
 ````bash
-bower install jquery-cccarousel --save
+bower install jquery-carousel --save
 ````
 
 add it to your HTML file

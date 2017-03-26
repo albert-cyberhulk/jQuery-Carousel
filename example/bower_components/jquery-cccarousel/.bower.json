@@ -1,0 +1,66 @@
+{
+  "name": "jquery-cccarousel",
+  "version": "0.0.1",
+  "homepage": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
+  "description": "simple jquery-carousel",
+  "main": "./dist/cc_script.js",
+  "keywords": [
+    "jquery-plugin",
+    "slider",
+    "responsive-slider",
+    "github"
+  ],
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel"
+  },
+  "author": {
+    "name": "albert-cyberhulk",
+    "email": "albert@cyberhulk.net",
+    "url": "http://cyberhulk.net/"
+  },
+  "contributors": [
+    {
+      "name": "Ashot",
+      "email": "ashot.todo@gmail.com"
+    },
+    {
+      "name": "Robert",
+      "email": "rhanesoghlyan@gmail.com"
+    },
+    {
+      "name": "Mariam",
+      "email": "mariam13martirosyan@gmail.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/albert-cyberhulk/jQuery-Carousel/issues"
+  },
+  "docs": "https://github.com/albert-cyberhulk/jQuery-Carousel#readme",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "qunit": "^2.1.1"
+  },
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "d1fde8e58fd83d437bcc9fd36982bb75ce134a3d"
+  },
+  "_source": "https://github.com/albert-cyberhulk/jQuery-Carousel.git",
+  "_target": "^0.0.1",
+  "_originalSource": "jquery-cccarousel"
+}
