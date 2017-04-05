@@ -37,6 +37,8 @@
 
         function stop() {
             settings.slider.stop(true);
+            /*jshint validthis:true */
+            return $(this);
         }
 
         function animate(params, delay) {
@@ -53,6 +55,9 @@
             } else {
                 animate({left: 0}, settings.clickTimer);
             }
+
+            /*jshint validthis:true */
+            return $(this);
         }
 
         function moveToRight() {
@@ -67,6 +72,9 @@
             } else {
                 animate({left: -settings.addition}, settings.clickTimer);
             }
+
+            /*jshint validthis:true */
+            return $(this);
         }
 
         function leftMouseover() {
