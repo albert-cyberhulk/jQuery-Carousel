@@ -37,6 +37,7 @@
 
         function stop() {
             settings.slider.stop(true);
+            /*jshint validthis:true */
             return $(this);
         }
 
@@ -55,6 +56,7 @@
                 animate({left: 0}, settings.clickTimer);
             }
 
+            /*jshint validthis:true */
             return $(this);
         }
 
@@ -71,6 +73,7 @@
                 animate({left: -settings.addition}, settings.clickTimer);
             }
 
+            /*jshint validthis:true */
             return $(this);
         }
 

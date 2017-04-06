@@ -34,6 +34,13 @@ module.exports = function (grunt) {
         'jshint:all',
         'test',
         'copy:dist',
-        'uglify'
+        'uglify',
+        'protractor:e2e'
+    ]);
+
+    grunt.registerTask('e2e', [
+        'connect:livereload',
+        'phantom:test',
+        'protractor:e2e'
     ]);
 };
